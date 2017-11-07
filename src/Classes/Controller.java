@@ -15,6 +15,7 @@ public class Controller
 {
     @FXML
     Button signUpButton;
+    Button loginButton;
 
 
 
