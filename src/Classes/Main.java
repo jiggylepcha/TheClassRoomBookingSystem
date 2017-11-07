@@ -6,9 +6,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.Serializable;
 
-public class Main extends Application
+
+public class Main extends Application implements Serializable
 {
+    public static final long serialVersionUID=12323139863L;
 
     public static Parent root;
 
