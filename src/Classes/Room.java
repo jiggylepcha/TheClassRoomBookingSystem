@@ -1,6 +1,11 @@
 package Classes;
 
-public class Room {
+import java.io.Serializable;
+
+public class Room implements Serializable{
+
+    public static final long serialVersionUID = 1231143L;
+
     private String roomNumber;
     private int roomCapacity;
     private boolean roomAvailability;

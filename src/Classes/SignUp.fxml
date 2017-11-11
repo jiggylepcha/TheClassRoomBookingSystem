@@ -23,6 +23,7 @@
                 <PasswordField fx:id="confirmPass" layoutX="259.0" layoutY="262.0" prefHeight="27.0" prefWidth="154.0" />
                 <Label layoutX="94.0" layoutY="205.0" text="Password" />
                 <Label layoutX="94.0" layoutY="268.0" text="Confirm Password" />
+            <Button layoutX="14.0" layoutY="21.0" mnemonicParsing="false" text="Back" fx:id="backButton" onMouseClicked="#clickBackButton" />
             </children>
         </AnchorPane>
     </children>

@@ -1,6 +1,8 @@
 package Classes;
 
-public class Request
+import java.io.Serializable;
+
+public class Request implements Serializable
 {
     private String preferredRoom;
     private String purposeBooking;

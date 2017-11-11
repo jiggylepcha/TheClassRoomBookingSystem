@@ -1,10 +1,13 @@
 package Classes;
 
-public class Admin extends Person{
+import java.io.Serializable;
 
-    Admin(String n, String e)
+public class Admin extends Person implements Serializable{
+
+
+    Admin(Credentials cred)
     {
-        super(n, e, "Admin");
+      super(cred,1);
     }
     public boolean checkRoomAvailibility()
     {

@@ -1,9 +1,10 @@
 package Classes;
 
 public class Faculty extends Person {
-    Faculty(String n, String email)
+
+    Faculty(Credentials credentials)
     {
-        super(n, email, "Faculty");
+        super(credentials,2);
     }
 
     public boolean checkRoomAvailability(Room r)

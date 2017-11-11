@@ -3,9 +3,13 @@ package Classes;
 import com.sun.corba.se.pept.encoding.OutputObject;
 import com.sun.tools.javac.comp.Check;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 import java.io.*;
+import java.util.HashMap;
 
 public class Controller2 implements Serializable
 {
@@ -30,6 +34,9 @@ public class Controller2 implements Serializable
     @FXML
     private CheckBox checkFaculty;
 
+    @FXML
+    private Button backButton;
+
     public static final long serialVersionUID=12323133L;
 
     public Controller2()
@@ -38,10 +45,11 @@ public class Controller2 implements Serializable
         checkStudent.setSelected(true);
     }
 
-    public void clickSignUp2() throws IOException {
+    public void clickSignUp2() throws IOException , ClassNotFoundException{
         String emailID=email.getText().toString();
         String password=pass.getText().toString();
         String confirmPassword=confirmPass.getText().toString();
+
 
         if(!validate(emailID, password, confirmPassword))
         {
@@ -66,17 +74,50 @@ public class Controller2 implements Serializable
 
     }
 
-    private void serialize(String emailID, String password, int designation) throws IOException {
+    private void serialize(String emailID, String password, int designation) throws IOException ,ClassNotFoundException {
         Credentials credentials=new Credentials(emailID, password, designation);
-        String file=emailID+".ser";
-        ObjectOutputStream objectOutputStream=null;
+        Person tempPerson;
+        if (designation == 0)
+        {
+            tempPerson = new Student(credentials);
+        }
+        else if (designation == 1)
+        {
+            tempPerson = new Admin(credentials);
+        }
+        else {
+            tempPerson = new Faculty(credentials);
+        }
+        HashMap<String,Person> myMap = deserialise();
+        myMap.put(emailID,tempPerson);
+        serialiseMap(myMap);
+        System.out.println(myMap);
+
+    }
+
+    private void serialiseMap(HashMap<String, Person> xxx) throws IOException {
+        ObjectOutputStream out=null;
         try {
-            objectOutputStream=new ObjectOutputStream(new FileOutputStream(file));
-            objectOutputStream.writeObject(credentials);
+            out=new ObjectOutputStream(new FileOutputStream("hashmap.ser"));
+            out.writeObject(xxx);
         }
         finally {
-            objectOutputStream.close();
+            out.close();
         }
+    }
+
+    public static HashMap<String, Person > deserialise() throws IOException, ClassNotFoundException {
+        ObjectInputStream in=null;
+        HashMap<String, Person> s1=null;
+        try {
+            in=new ObjectInputStream(new FileInputStream("hashmap.ser"));
+             s1=(HashMap<String, Person>) in.readObject();
+        }
+        finally {
+            in.close();
+        }
+
+        return s1;
     }
 
     public boolean validate(String email, String pass, String confirmPass)
@@ -117,5 +158,23 @@ public class Controller2 implements Serializable
         emailDomain=tempEmail.substring(pos);
         System.out.println(emailDomain);
         return emailDomain.equals("@iiitd.ac.in");
+    }
+
+    public void clickBackButton() throws IOException
+    {
+        Stage curStage=(Stage) backButton.getScene().getWindow();
+
+
+        try
+        {
+            Main.root= FXMLLoader.load(getClass().getResource("Login.fxml"));
+            curStage.setScene(new Scene(Main.root, 1000, 1000));
+            curStage.setTitle("Sign In");
+            curStage.show();
+        }
+        catch (IOException e1)
+        {
+            e1.printStackTrace();
+        }
     }
 }
