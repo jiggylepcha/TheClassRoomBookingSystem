@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.HashMap;
 
 public class Controller implements Serializable
 {
@@ -29,6 +30,7 @@ public class Controller implements Serializable
     private TextField userID;
     @FXML
     private PasswordField passwordField;
+
 
 
 
@@ -53,42 +55,49 @@ public class Controller implements Serializable
 
 
 
-    public void clickLogIn() throws IOException
+    public void clickLogIn() throws IOException , ClassNotFoundException
     {
         Stage curStage = (Stage) loginButton.getScene().getWindow();
 
-        loginButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event)
-            {
-                if(userID.getText().isEmpty())
-                {
-                    showAlert(Alert.AlertType.ERROR,
-                            "Error!", "Email cannot be empty");
-                    return;
-                }
-                String tempEmail = userID.getText();
-                String emailDomain = "";
-                for (int i = 0; i < tempEmail.length() - 1; i++)
-                {
-                    String tempChar = tempEmail.substring(i,i+1);
-                    if (tempChar.equals("@"))
-                    {
-                        emailDomain = tempChar.substring(i);
-                    }
-                }
-                if(!emailDomain.equals("@iiitd.ac.in"))
-                {
-                    showAlert(Alert.AlertType.ERROR, "Error", "Only IIITD email allowed");
-                    return;
-                }
-                if (passwordField.getText().isEmpty())
-                {
-                    showAlert(Alert.AlertType.ERROR, "Error", "Password field cannot be empty");
-                    return;
-                }
-            }
-        });
+        if(userID.getText().isEmpty())
+        {
+            showAlert(Alert.AlertType.ERROR,
+                    "Error!", "Email cannot be empty");
+            return;
+        }
+        if (passwordField.getText().isEmpty())
+        {
+            showAlert(Alert.AlertType.ERROR, "Error", "Password field cannot be empty");
+            return;
+        }
+        String tempEmail = userID.getText();
+        HashMap<String,Person> myMap = Controller2.deserialise();
+
+        if (!myMap.containsKey(tempEmail))
+        {
+            showAlert(Alert.AlertType.ERROR, "Error", "Invalid Email. Please Sign Up");
+            return;
+        }
+        Person p = myMap.get(tempEmail);
+//        Student s = myMap.get(tempEmail);
+        if (passwordField.getText().compareTo(p.credentials.pass) != 0)
+        {
+            showAlert(Alert.AlertType.ERROR, "Error", "Wrong Password.");
+            return;
+        }
+        if (p.typeOfUser == 0)
+        {
+            System.out.println("FOUND STUDENT");
+        }
+        else if (p.typeOfUser == 1)
+        {
+            System.out.println("FOUND ADMIN");
+        }
+        else
+        {
+            System.out.println("FOUND FACULTY");
+        }
+
     }
     private void showAlert(Alert.AlertType alertType, String title, String message) {
         Alert alert = new Alert(alertType);

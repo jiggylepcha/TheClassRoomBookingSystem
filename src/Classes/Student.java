@@ -1,12 +1,16 @@
 package Classes;
 
-public class Student extends Person {
+import java.io.Serializable;
+
+public class Student extends Person implements Serializable{
+
+    public static final long serialVersionUID = 1231142L;
     protected Room room;
     protected Course course;
 
-    Student(String n, String email)
+    public Student(Credentials credentials)
     {
-        super(n, email, "Student");
+        super(credentials,0);
     }
 
     public boolean checkRoomAvailability(Room r)
@@ -27,5 +31,10 @@ public class Student extends Person {
     public void addCourse(String course)
     {
 
+    }
+
+    public String toString()
+    {
+        return (this.credentials.emaill);
     }
 }

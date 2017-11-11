@@ -1,12 +1,19 @@
 package Classes;
 
-public class Person
+import java.io.Serializable;
+
+public class Person implements Serializable
 {
-    protected String name, email, typeOfUser;
-    Person(String n, String e, String t)
+    Credentials credentials;
+    int typeOfUser;
+    Person(Credentials cred, int typeOfUser)
     {
-        this.name = n;
-        this.email = e;
-        this.typeOfUser = t;
+        this.credentials = cred;
+        this.typeOfUser = typeOfUser;
+    }
+
+    Person()
+    {
+
     }
 }
