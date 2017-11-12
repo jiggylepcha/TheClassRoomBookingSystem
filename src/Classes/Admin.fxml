@@ -6,12 +6,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Classes.AdminController">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
             <Label layoutX="87.0" layoutY="45.0" prefHeight="25.0" prefWidth="124.0" text="Room To Be Viewed" />
-            <Button layoutX="577.0" layoutY="14.0" mnemonicParsing="false" text="Logout" />
+            <Button layoutX="577.0" layoutY="14.0" mnemonicParsing="false" text="Logout" fx:id="logOutButton" onMouseClicked="#clickLogOut"/>
             <Button layoutX="357.0" layoutY="45.0" mnemonicParsing="false" text="View" />
             <Label layoutX="87.0" layoutY="106.0" prefHeight="25.0" prefWidth="124.0" text="Room To Be Booked" />
             <Button layoutX="357.0" layoutY="106.0" mnemonicParsing="false" text="Book" />

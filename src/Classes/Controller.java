@@ -88,14 +88,47 @@ public class Controller implements Serializable
         if (p.typeOfUser == 0)
         {
             System.out.println("FOUND STUDENT");
+            try
+            {
+                Main.root=FXMLLoader.load(getClass().getResource("Student.fxml"));
+                curStage.setScene(new Scene(Main.root, 1000, 1000));
+                curStage.setTitle("Student Page");
+                curStage.show();
+            }
+            catch (IOException e1)
+            {
+                e1.printStackTrace();
+            }
         }
         else if (p.typeOfUser == 1)
         {
             System.out.println("FOUND ADMIN");
+            try
+            {
+                Main.root=FXMLLoader.load(getClass().getResource("Admin.fxml"));
+                curStage.setScene(new Scene(Main.root, 1000, 1000));
+                curStage.setTitle("Admin Page");
+                curStage.show();
+            }
+            catch (IOException e1)
+            {
+                e1.printStackTrace();
+            }
         }
         else
         {
             System.out.println("FOUND FACULTY");
+            try
+            {
+                Main.root=FXMLLoader.load(getClass().getResource("Faculty.fxml"));
+                curStage.setScene(new Scene(Main.root, 1000, 1000));
+                curStage.setTitle("Faculty Page");
+                curStage.show();
+            }
+            catch (IOException e1)
+            {
+                e1.printStackTrace();
+            }
         }
 
     }
@@ -109,5 +142,5 @@ public class Controller implements Serializable
     }
 
 
-    
+
 }
