@@ -50,6 +50,7 @@ public class Controller2 implements Serializable
         String password=pass.getText().toString();
         String confirmPassword=confirmPass.getText().toString();
 
+        Stage curStage=(Stage) signUpButton.getScene().getWindow();
 
         if(!validate(emailID, password, confirmPassword))
         {
@@ -70,6 +71,25 @@ public class Controller2 implements Serializable
                 designation=2;
 
             serialize(emailID, password, designation);
+
+            Alert alert=new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("You have been successfully signed up. Try loggin in");
+            alert.setTitle("Sign Up successful");
+            alert.setHeaderText(null);
+            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+            stage.setAlwaysOnTop(true);
+            alert.show();
+            try
+            {
+                Main.root=FXMLLoader.load(getClass().getResource("Login.fxml"));
+                curStage.setScene(new Scene(Main.root, 1000, 1000));
+                curStage.setTitle("Login");
+                curStage.show();
+            }
+            catch (IOException e1)
+            {
+                e1.printStackTrace();
+            }
         }
 
     }
