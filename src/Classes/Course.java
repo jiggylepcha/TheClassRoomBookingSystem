@@ -32,6 +32,13 @@ public class Course implements Serializable
     private String labVenue;
     private String preConditions;
     private String postConditions;
+    private String monday;
+    private String tuesday;
+    private String wednesday;
+    private String thursday;
+    private String friday;
+    private String tut;
+    private String lab;
 
     Course(String type,
             String courseName,
@@ -39,22 +46,13 @@ public class Course implements Serializable
             String instructor,
             String credits,
             String acronym,
-            String mondayTime,
-            String mondayVenue,
-            String tuesdayTime,
-            String tuesdayVenue,
-            String wednesdayTime,
-            String wednesdayVenue,
-            String thursdayTime,
-            String thursdayVenue,
-            String fridayTime,
-            String fridayVenue,
-            String tutDay,
-            String tutTime,
-            String tutVenue,
-            String labDay,
-            String labTime,
-            String labVenue,
+            String monday,
+            String tuesday,
+            String wednesday,
+            String thursday,
+            String friday,
+            String tut,
+            String lab,
             String preConditions,
             String postConditions)
     {
@@ -64,22 +62,13 @@ public class Course implements Serializable
         this.instructor = instructor;
         this.credits = credits;
         this.acronym = acronym;
-        this.mondayTime = mondayTime;
-        this.mondayVenue = mondayVenue;
-        this.tuesdayTime = tuesdayTime;
-        this.tuesdayVenue = tuesdayVenue;
-        this.wednesdayTime = wednesdayTime;
-        this.wednesdayVenue = wednesdayVenue;
-        this.thursdayTime = thursdayTime;
-        this.thursdayVenue = thursdayVenue;
-        this.fridayTime = fridayTime;
-        this.fridayVenue = fridayVenue;
-        this.tutDay = tutDay;
-        this.tutTime = tutTime;
-        this.tutVenue = tutVenue;
-        this.labDay = labDay;
-        this.labTime = labTime;
-        this.labVenue = labVenue;
+        this.monday = monday;
+        this.tuesday = tuesday;
+        this.wednesday = wednesday;
+        this.thursday = thursday;
+        this.friday = friday;
+        this.tut = tut;
+        this.lab = lab;
         this.preConditions = preConditions;
         this.postConditions = postConditions;
     }
@@ -109,15 +98,36 @@ public class Course implements Serializable
     }
 
     public String getMondayTime() {
-        return mondayTime;
+        if (monday.contains("$")) {
+            mondayTime = monday.substring(0, monday.indexOf("$"));
+            return mondayTime;
+        }
+        else
+        {
+            return monday;
+        }
     }
 
     public String getMondayVenue() {
-        return mondayVenue;
+        if (monday.contains("$")) {
+            mondayVenue = monday.substring(monday.indexOf("$") + 1);
+            return mondayVenue;
+        }
+        else
+        {
+            return monday;
+        }
     }
 
     public String getTuesdayTime() {
-        return tuesdayTime;
+        if (tuesday.contains("$")) {
+            tuesdayTime = tuesday.substring(0, tuesday.indexOf("$"));
+            return tuesdayTime;
+        }
+        else
+        {
+            return tuesday;
+        }
     }
 
     public String getTuesdayVenue() {
@@ -125,7 +135,14 @@ public class Course implements Serializable
     }
 
     public String getWednesdayTime() {
-        return wednesdayTime;
+        if (wednesday.contains("$")) {
+            wednesdayTime = wednesday.substring(0, wednesday.indexOf("$"));
+            return wednesdayTime;
+        }
+        else
+        {
+            return wednesday;
+        }
     }
 
     public String getWednesdayVenue() {
@@ -133,7 +150,14 @@ public class Course implements Serializable
     }
 
     public String getThursdayTime() {
-        return thursdayTime;
+        if (thursday.contains("$")) {
+            thursdayTime = thursday.substring(0, thursday.indexOf("$"));
+            return thursdayTime;
+        }
+        else
+        {
+            return thursday;
+        }
     }
 
     public String getThursdayVenue() {
