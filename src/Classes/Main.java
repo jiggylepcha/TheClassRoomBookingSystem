@@ -17,7 +17,7 @@ public class Main extends Application implements Serializable
 
     public static Parent root;
 
-    public static ArrayList<Course> course;
+    public ArrayList<Course> course;
 
     @Override
     public void start(Stage primaryStage) throws Exception
@@ -31,31 +31,59 @@ public class Main extends Application implements Serializable
 
     }
 
-    public static void main(String[] args)throws IOException
+    public static void main(String[] args)throws IOException, ClassNotFoundException
     {
-        CSVParser();
+        Main ob = new Main();
+        ob.CSVParser();
+        ArrayList<Course> test = deserializeCSV();
+        System.out.println(test.get(2).getAcronym());
         launch(args);
     }
 
-    public static void CSVParser() throws FileNotFoundException, IOException
+    public void CSVParser() throws FileNotFoundException, IOException
     {
         File file=new File("./src/");
         Scanner scanner = new Scanner(new File("./src/Classes/TheFinalCSVYES.csv"));
         String line = null;
+        course = new ArrayList<Course>();
         while(scanner.hasNextLine())
         {
             line  = scanner.nextLine();
             String [] splitted = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)", -1);
-            for (int i = 0; i < splitted.length; i++){System.out.println(splitted[i]);}
-            System.out.println();
-//            Course c = new Course(splitted[0],
-//                    splitted[1], splitted[2],splitted[3],splitted[4],splitted[5],
-//                    splitted[6],splitted[7],splitted[8],splitted[9],splitted[10],
-//                    splitted[11],splitted[12],splitted[13],splitted[14],splitted[15],
-//                    splitted[16],splitted[17],splitted[18],splitted[19],splitted[20],
-//                    splitted[21],splitted[22],splitted[23]);
-//            course.add(c);
+            Course c = new Course(splitted[0],
+                    splitted[1], splitted[2],splitted[3],splitted[4],splitted[5],
+                    splitted[6],splitted[7],splitted[8],splitted[9],splitted[10],
+                    splitted[11],splitted[12],splitted[13],splitted[14]);
+            course.add(c);
+        }
+        serializeCSV(course);
+
+    }
+
+    private void serializeCSV(ArrayList<Course> c) throws IOException
+    {
+        ObjectOutputStream out=null;
+        try {
+            out=new ObjectOutputStream(new FileOutputStream("csv.ser"));
+            out.writeObject(c);
+        }
+        finally {
+            out.close();
+        }
+    }
+
+    public static ArrayList<Course> deserializeCSV() throws IOException, ClassNotFoundException
+    {
+        ObjectInputStream in = null;
+        ArrayList<Course> cou = null;
+        try {
+            in = new ObjectInputStream(new FileInputStream("csv.ser"));
+            cou = (ArrayList<Course>) in.readObject();
+        }
+        finally {
+            in.close();
         }
 
+        return cou;
     }
 }
