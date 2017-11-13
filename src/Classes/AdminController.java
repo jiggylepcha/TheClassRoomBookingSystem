@@ -15,6 +15,18 @@ public class AdminController
     @FXML
     private Button logOutButton;
 
+    @FXML
+    private Button viewRoom;
+
+    @FXML
+    private Button bookRoom;
+
+    @FXML
+    private Button unbookRoom;
+
+    @FXML
+    private Button viewRequests;
+
     public void clickLogOut()
     {
         Stage curStage=(Stage) logOutButton.getScene().getWindow();
@@ -30,6 +42,26 @@ public class AdminController
         {
             e1.printStackTrace();
         }
+
+    }
+
+    public void clickViewRoom()
+    {
+
+    }
+
+    public void clickBookRoom()
+    {
+
+    }
+
+    public void clickUnbookRoom()
+    {
+
+    }
+
+    public void clickViewRequests()
+    {
 
     }
 }
