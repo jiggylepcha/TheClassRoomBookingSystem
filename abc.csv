@@ -1,0 +1,17 @@
+Mandatory/Elective,Course Name ,Course Code,Instructor,Credits,Acronym
+Mandatory,Discrete Mathematics,CSE121,Dhongoon Chang,4,DM
+Mandatory,Advanced Programming,CSE201,Vivek Kumar,4,AP
+Mandatory,Computer Organization,CSE112,Naveen Prakash ,4,CO
+Elective,Math-III,MTH203,Sarthok Sircar,4,M-III
+Elective,Signal & Systems,ECE250,Anubha Gupta,4,S&S
+Elective,Real Analysis I,MTH2xx,Samaresh Chatterjee,4,RA
+Elective,Number Theory,MTH2xx,Anuradha Sharma,4,NT
+HSS Elective,Perspectives of Knowledge,HSS202,Raj Ayyar,4,PoK
+HSS Elective,Introduction to Psychology,HSS204,Akshay Kumar,4,Psy
+HSS Elective,Theory & Practice of Engineering Ethics,HSS208,Raj Ayyar,4,TPEE
+HSS Elective,Theatre Appreciation,HSS211,Manohar Khushlani,4,TA
+HSS Elective,Key Concepts in Economic Sociology,HSS2ES,Amrit Srinivasan,4,ES
+HSS Elective,Introduction to Digital Ethonography,HSS2xx,Shriram Venkatraman,4,IDE
+HSS Elective,Introduction to Media in Society : A Public Sphere Approach,HSS2xx,Aasim Khan,4,IMS
+HSS Elective,Introduction to Social Informatics,HSS2xx,Venkata Ratandeep Suri,4,ISI
+HSS Elective,Introduction to Poetry,HSS223A,Saumya Kulshreshtha,4,PO
