@@ -40,7 +40,6 @@ public class Main extends Application implements Serializable
     public static void CSVParser() throws FileNotFoundException, IOException
     {
         File file=new File("./src/");
-        //System.out.println(file.getAbsolutePath());
         Scanner scanner = new Scanner(new File("./src/Classes/TheFinalCSVYES.csv"));
         String line = null;
         while(scanner.hasNextLine())
