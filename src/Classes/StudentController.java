@@ -4,6 +4,7 @@ import com.sun.corba.se.pept.encoding.OutputObject;
 import com.sun.tools.javac.comp.Check;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Modality;
@@ -42,5 +43,37 @@ public class StudentController
         Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
         stage.setAlwaysOnTop(true);
         alert.show();
+    }
+
+    public void clickTimetable() throws IOException
+    {
+        Stage stage=new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("TimeTable.fxml"));
+        stage.setScene(new Scene(root, 750, 600));
+        stage.show();
+    }
+
+    public void clickSearchCourse() throws IOException
+    {
+        Stage stage=new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("Search.fxml"));
+        stage.setScene(new Scene(root, 750, 600));
+        stage.show();
+    }
+
+    public void clickBookRoom() throws IOException
+    {
+        Stage stage=new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("BookRoom.fxml"));
+        stage.setScene(new Scene(root, 750, 600));
+        stage.show();
+    }
+
+    public void clickRoomAvailability() throws IOException
+    {
+        Stage stage=new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("ViewRoom.fxml"));
+        stage.setScene(new Scene(root, 750, 600));
+        stage.show();
     }
 }

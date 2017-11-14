@@ -35,8 +35,6 @@ public class Main extends Application implements Serializable
     {
         Main ob = new Main();
         ob.CSVParser();
-        ArrayList<Course> test = deserializeCSV();
-        System.out.println(test.get(2).getAcronym());
         launch(args);
     }
 
