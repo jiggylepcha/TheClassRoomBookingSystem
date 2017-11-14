@@ -4,6 +4,7 @@ import com.sun.corba.se.pept.encoding.OutputObject;
 import com.sun.tools.javac.comp.Check;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -45,23 +46,35 @@ public class AdminController
 
     }
 
-    public void clickViewRoom()
+    public void clickViewRoom() throws IOException
     {
-
+        Stage stage=new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("ViewRoom.fxml"));
+        stage.setScene(new Scene(root, 750, 600));
+        stage.show();
     }
 
-    public void clickBookRoom()
+    public void clickBookRoom() throws IOException
     {
-
+        Stage stage=new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("BookRoom.fxml"));
+        stage.setScene(new Scene(root, 750, 600));
+        stage.show();
     }
 
-    public void clickUnbookRoom()
+    public void clickUnbookRoom() throws IOException
     {
-
+        Stage stage=new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("CancelBooking.fxml"));
+        stage.setScene(new Scene(root, 750, 600));
+        stage.show();
     }
 
-    public void clickViewRequests()
+    public void clickViewRequests() throws IOException
     {
-
+        Stage stage=new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("Request.fxml"));
+        stage.setScene(new Scene(root, 750, 600));
+        stage.show();
     }
 }

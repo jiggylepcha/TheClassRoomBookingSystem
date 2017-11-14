@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+  <children>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Button layoutX="574.0" layoutY="14.0" mnemonicParsing="false" text="Logout" />
+            <Button layoutX="561.0" layoutY="355.0" mnemonicParsing="false" text="Cancel" />
+            <TextField layoutX="87.0" layoutY="57.0" prefHeight="27.0" prefWidth="314.0" promptText="Type a Course name or it's postcondition" />
+            <Button layoutX="445.0" layoutY="57.0" mnemonicParsing="false" text="Search Courses" />
+            <ListView layoutX="36.0" layoutY="96.0" prefHeight="240.0" prefWidth="578.0" />
+            <Button layoutX="496.0" layoutY="354.0" mnemonicParsing="false" text="Add" />
+            <Label layoutX="271.0" layoutY="19.0" text="Search Courses" />
+         </children>
+    </AnchorPane>
+  </children>
+</VBox>

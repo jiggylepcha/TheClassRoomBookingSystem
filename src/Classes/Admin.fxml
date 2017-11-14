@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
@@ -10,17 +8,11 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
-            <Label layoutX="87.0" layoutY="45.0" prefHeight="25.0" prefWidth="124.0" text="Room To Be Viewed" />
-            <Button layoutX="577.0" layoutY="14.0" mnemonicParsing="false" text="Logout" fx:id="logOutButton" onMouseClicked="#clickLogOut"/>
-            <Button layoutX="357.0" layoutY="45.0" mnemonicParsing="false" text="View" fx:id="viewRoom"/>
-            <Label layoutX="87.0" layoutY="106.0" prefHeight="25.0" prefWidth="124.0" text="Room To Be Booked" />
-            <Button layoutX="357.0" layoutY="106.0" mnemonicParsing="false" text="Book" fx:id="bookRoom" />
-            <Label layoutX="84.0" layoutY="175.0" prefHeight="25.0" prefWidth="131.0" text="Room To Be Unbooked" />
-            <TextField layoutX="247.0" layoutY="45.0" prefHeight="25.0" prefWidth="45.0" />
-            <TextField layoutX="247.0" layoutY="106.0" prefHeight="25.0" prefWidth="45.0" />
-            <TextField layoutX="247.0" layoutY="175.0" prefHeight="25.0" prefWidth="45.0" />
-            <Button layoutX="348.0" layoutY="174.0" mnemonicParsing="false" text="Unbook" fx:id="unbookRoom" />
-            <Button layoutX="186.0" layoutY="258.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="189.0" text="View Student Requests" fx:id="viewRequests"/>
+            <Button fx:id="logOutButton" layoutX="577.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#clickLogOut" text="Logout" />
+            <Button fx:id="viewRoom" layoutX="49.0" layoutY="147.0" mnemonicParsing="false" text="View Room Availability" onMouseClicked="#clickViewRoom" />
+            <Button fx:id="bookRoom" layoutX="266.0" layoutY="147.0" mnemonicParsing="false" text="Book Room" onMouseClicked="#clickBookRoom"/>
+            <Button fx:id="unbookRoom" layoutX="418.0" layoutY="147.0" mnemonicParsing="false" text="Unbook Room" onMouseClicked="#clickUnbookRoom"/>
+            <Button fx:id="viewRequests" layoutX="216.0" layoutY="258.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="189.0" text="View Student Requests" onMouseClicked="#clickViewRequests"/>
          </children>
     </AnchorPane>
       <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" />

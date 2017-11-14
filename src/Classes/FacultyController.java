@@ -1,7 +1,9 @@
 package Classes;
 
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -30,6 +32,31 @@ public class FacultyController
         {
             e1.printStackTrace();
         }
+    }
+
+    public void clickRoomAvailibiity() throws IOException
+    {
+        Stage stage=new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("ViewRoom.fxml"));
+        stage.setScene(new Scene(root, 750, 600));
+        stage.show();
+
+    }
+
+    public void clickBookRoom() throws IOException
+    {
+        Stage stage=new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("BookRoom.fxml"));
+        stage.setScene(new Scene(root, 750, 600));
+        stage.show();
+    }
+
+    public void clickUnbookRoom() throws IOException
+    {
+        Stage stage=new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("CancelBooking.fxml"));
+        stage.setScene(new Scene(root, 750, 600));
+        stage.show();
     }
 
 }
