@@ -131,7 +131,14 @@ public class Course implements Serializable
     }
 
     public String getTuesdayVenue() {
-        return tuesdayVenue;
+        if (tuesday.contains("$")) {
+            tuesdayVenue = tuesday.substring(tuesday.indexOf("$") + 1);
+            return tuesdayVenue;
+        }
+        else
+        {
+            return tuesday;
+        }
     }
 
     public String getWednesdayTime() {
@@ -146,7 +153,14 @@ public class Course implements Serializable
     }
 
     public String getWednesdayVenue() {
-        return wednesdayVenue;
+        if (wednesday.contains("$")) {
+            wednesdayVenue = wednesday.substring(wednesday.indexOf("$") + 1);
+            return wednesdayVenue;
+        }
+        else
+        {
+            return wednesday;
+        }
     }
 
     public String getThursdayTime() {
@@ -161,39 +175,169 @@ public class Course implements Serializable
     }
 
     public String getThursdayVenue() {
-        return thursdayVenue;
+        if (thursday.contains("$")) {
+            thursdayVenue = thursday.substring(thursday.indexOf("$") + 1);
+            return thursdayVenue;
+        }
+        else
+        {
+            return thursday;
+        }
     }
 
     public String getFridayTime() {
-        return fridayTime;
+        if (friday.contains("$")) {
+            fridayTime = friday.substring(0, friday.indexOf("$"));
+            return fridayTime;
+        }
+        else
+        {
+            return friday;
+        }
     }
 
     public String getFridayVenue() {
-        return fridayVenue;
+        if (friday.contains("$")) {
+            fridayVenue = friday.substring(friday.indexOf("$") + 1);
+            return fridayVenue;
+        }
+        else
+        {
+            return friday;
+        }
     }
 
     public String getTutDay() {
-        return tutDay;
+        int index;
+        String day1, day2;
+        if(tut.contains("$"))
+        {
+            int counter = 0;
+            for(int i = 0; i < tut.length(); i++)
+            {
+                 char c = tut.charAt(i);
+                 if (c == ':')
+                 {
+                    counter++;
+                 }
+                 if(counter == 3)
+                 {
+                     index = i;
+                     day1 = tut.substring(0, index);
+                     day1 = day1.trim();
+                     //System.out.println(day1);
+                     day2 = tut.substring(index);
+                     day2 = day2.trim();
+
+                     if(day2.contains("$"))
+                     {
+                         return day1.substring(0, day1.indexOf("$")) + day2.substring(0, day2.indexOf("$"));
+                     }
+                     else
+                     {
+                         return tut.substring(0,tut.indexOf("$")); // If only one day is there
+                     }
+                 }
+            }
+            return tut.substring(0,tut.indexOf("$")); // If only one day is there
+        }
+        else
+        {return tut;}
     }
 
     public String getTutTime() {
-        return tutTime;
+        if(tut.contains("$"))
+        {
+            int counter = 0, indexStart = 0, indexEnd = 0, secondDollar=0;
+            boolean flag1 = true, flag2 = true, flag3 = true;
+            for (int i = 0; i < tut.length(); i++)
+            {
+                char c = tut.charAt(i);
+                if(c == '$')
+                {
+                    counter ++;
+                }
+                if (counter == 2 && flag1 == true)
+                {
+                    secondDollar = i;
+                    flag1 = false;
+                }
+                if(counter == 3 && flag2 == true)
+                {
+                    indexStart = i;
+                    flag2 = false;
+                }
+                if (counter == 4 && flag3 == true)
+                {
+                    indexEnd = i;
+                    flag3 = false;
+                }
+            }
+            //System.out.println(secondDollar);
+            if (counter > 2)
+            {
+                // There are two tut days
+                return tut.substring(tut.indexOf("$")+1, secondDollar) + "&" + tut.substring(indexStart+1,indexEnd);
+
+            }
+            else
+            {
+                // There is only one tut day
+                return tut.substring(tut.indexOf("$")+1,secondDollar);
+            }
+        }else
+        {
+        return tut;}
     }
 
     public String getTutVenue() {
-        return tutVenue;
+        if (tut.contains("$"))
+        {
+            int posOfSeconddol=tut.indexOf("$",tut.indexOf("$")+1);
+            int posOfCol=tut.indexOf(":", posOfSeconddol);
+            String ret=tut.substring(posOfSeconddol+1, posOfCol-1);
+            if(tut.substring(posOfCol).length() >4)
+            {
+                int posOfDol=tut.substring(posOfCol).indexOf("$", tut.substring(posOfCol).indexOf("$")+1);
+                int posOfSCol=tut.substring(posOfCol).indexOf(":", posOfDol);
+                ret+="&"+tut.substring(posOfCol).substring(posOfDol+1, posOfSCol);
+            }
+
+            return ret;
+        }
+        else {
+            return tut;
+        }
     }
 
     public String getLabDay() {
-        return labDay;
+        if (lab.contains("$"))
+        {
+            return lab.substring(0, lab.indexOf(":")-1);
+        }
+        else {
+            return lab;
+        }
     }
 
     public String getLabTime() {
-        return labTime;
+        if(lab.contains("$"))
+        {
+            return lab.substring(lab.indexOf("$") + 1,lab.lastIndexOf("$"));
+        }
+        else {
+            return lab;
+        }
     }
 
     public String getLabVenue() {
-        return labVenue;
+        if(lab.contains("$"))
+        {
+            return lab.substring(lab.lastIndexOf("$")+1);
+        }
+        else {
+            return lab;
+        }
     }
 
     public String getPreConditions() {
@@ -203,6 +347,4 @@ public class Course implements Serializable
     public String getPostConditions() {
         return postConditions;
     }
-
-
 }
