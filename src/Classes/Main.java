@@ -11,17 +11,15 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
-public class Main extends Application implements Serializable
-{
-    public static final long serialVersionUID=12323139863L;
+public class Main extends Application implements Serializable {
+    public static final long serialVersionUID = 12323139863L;
 
     public static Parent root;
 
     public ArrayList<Course> course;
 
     @Override
-    public void start(Stage primaryStage) throws Exception
-    {
+    public void start(Stage primaryStage) throws Exception {
         //System.out.println(new File(""));
         root = FXMLLoader.load(getClass().getResource("Login.fxml"));
         primaryStage.setTitle("Login");
@@ -31,57 +29,79 @@ public class Main extends Application implements Serializable
 
     }
 
-    public static void main(String[] args)throws IOException, ClassNotFoundException
-    {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
         Main ob = new Main();
-        ob.CSVParser();
+        //ob.populateClassroom();
+        //ob.CSVParser();
         launch(args);
     }
 
-    public void CSVParser() throws FileNotFoundException, IOException
-    {
-        File file=new File("./src/");
+    public void CSVParser() throws FileNotFoundException, IOException {
+        File file = new File("./src/");
         Scanner scanner = new Scanner(new File("./src/Classes/TheFinalCSVYES.csv"));
         String line = null;
         course = new ArrayList<Course>();
-        while(scanner.hasNextLine())
-        {
-            line  = scanner.nextLine();
-            String [] splitted = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)", -1);
+        while (scanner.hasNextLine()) {
+            line = scanner.nextLine();
+            String[] splitted = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)", -1);
             Course c = new Course(splitted[0],
-                    splitted[1], splitted[2],splitted[3],splitted[4],splitted[5],
-                    splitted[6],splitted[7],splitted[8],splitted[9],splitted[10],
-                    splitted[11],splitted[12],splitted[13],splitted[14]);
+                    splitted[1], splitted[2], splitted[3], splitted[4], splitted[5],
+                    splitted[6], splitted[7], splitted[8], splitted[9], splitted[10],
+                    splitted[11], splitted[12], splitted[13], splitted[14]);
             course.add(c);
         }
         serializeCSV(course);
 
     }
 
-    private void serializeCSV(ArrayList<Course> c) throws IOException
-    {
-        ObjectOutputStream out=null;
+    private void serializeCSV(ArrayList<Course> c) throws IOException {
+        ObjectOutputStream out = null;
         try {
-            out=new ObjectOutputStream(new FileOutputStream("csv.ser"));
+            out = new ObjectOutputStream(new FileOutputStream("csv.ser"));
             out.writeObject(c);
-        }
-        finally {
+        } finally {
             out.close();
         }
     }
 
-    public static ArrayList<Course> deserializeCSV() throws IOException, ClassNotFoundException
-    {
+    public static ArrayList<Course> deserializeCSV() throws IOException, ClassNotFoundException {
         ObjectInputStream in = null;
         ArrayList<Course> cou = null;
         try {
             in = new ObjectInputStream(new FileInputStream("csv.ser"));
             cou = (ArrayList<Course>) in.readObject();
-        }
-        finally {
+        } finally {
             in.close();
         }
 
         return cou;
     }
+
+//    public void populateClassroom() throws IOException, ClassNotFoundException {
+//        ArrayList<Course> populate = deserializeCSV();
+//        ArrayList<Room> rooms = new ArrayList<Room>(18);
+//        int n = 0;
+//        for (int i = 0; i < 3; i++)
+//        {
+//            for (int j = 1; j < 5; j++)
+//            {
+//                rooms.get(n).setRoomNumber("C"+Integer.toString(i)+Integer.toString(j));
+//                n++;
+//            }
+//        }
+//        for(int i = 1; i <=3 ; i++) {
+//            rooms.get(n).setRoomNumber("LR"+Integer.toString(i));
+//            n++;
+//        }
+//        for(int i = 1; i <=3 ;i++)
+//        {
+//            rooms.get(n).setRoomNumber("L2"+Integer.toString(i));
+//            n++;
+//        }
+//        for (int i = 1; i < populate.size(); i++)
+//        {
+//
+//        }
+//  }
 }
+

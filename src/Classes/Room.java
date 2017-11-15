@@ -7,36 +7,58 @@ public class Room implements Serializable{
     public static final long serialVersionUID = 1231143L;
 
     private String roomNumber;
-    private int roomCapacity;
-    private boolean roomAvailability;
+    private String mondayBookings;
+    private String tuesdayBookings;
+    private String wednesdayBookings;
+    private String thursdayBookings;
+    private String fridayBookings;
 
-    public String getRoomNumber()
-    {
+    public String getRoomNumber() {
         return roomNumber;
     }
 
-    public int getRoomCapacity()
-    {
-        return roomCapacity;
+    public void setRoomNumber(String roomNumber) {
+        this.roomNumber = roomNumber;
     }
 
-    public boolean getRoomAvailability()
-    {
-        return roomAvailability;
+    public String getMondayBookings() {
+        return mondayBookings;
     }
 
-    public void setRoomNumber(String rn)
-    {
-        roomNumber = rn;
+    public void setMondayBookings(String mondayBookings) {
+        this.mondayBookings = mondayBookings;
     }
 
-    public void setRoomCapacity(int rc)
-    {
-        roomCapacity = rc;
+    public String getTuesdayBookings() {
+        return tuesdayBookings;
     }
 
-    public void setRoomAvailability(boolean ra)
-    {
-        roomAvailability = ra;
+    public void setTuesdayBookings(String tuesdayBookings) {
+        this.tuesdayBookings = tuesdayBookings;
     }
+
+    public String getWednesdayBookings() {
+        return wednesdayBookings;
+    }
+
+    public void setWednesdayBookings(String wednesdayBookings) {
+        this.wednesdayBookings = wednesdayBookings;
+    }
+
+    public String getThursdayBookings() {
+        return thursdayBookings;
+    }
+
+    public void setThursdayBookings(String thursdayBookings) {
+        this.thursdayBookings = thursdayBookings;
+    }
+
+    public String getFridayBookings() {
+        return fridayBookings;
+    }
+
+    public void setFridayBookings(String fridayBookings) {
+        this.fridayBookings = fridayBookings;
+    }
+
 }

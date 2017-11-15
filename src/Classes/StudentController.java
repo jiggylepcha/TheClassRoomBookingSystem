@@ -64,7 +64,7 @@ public class StudentController
     public void clickBookRoom() throws IOException
     {
         Stage stage=new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("BookRoom.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("StudentBookRoom.fxml"));
         stage.setScene(new Scene(root, 750, 600));
         stage.show();
     }
