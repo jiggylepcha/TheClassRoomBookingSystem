@@ -23,6 +23,7 @@ public class Student extends Person implements Serializable{
         this.dayCheck = dayCheck;
     }
 
+
     public boolean checkRoomAvailability() throws IOException, ClassNotFoundException {
         Main ob = new Main();
         ArrayList<Course> routine = Main.deserializeCSV();
@@ -84,9 +85,10 @@ public class Student extends Person implements Serializable{
         return true;
     }
 
-    public void bookRoom()
+    public void bookRoom()throws IOException, ClassNotFoundException
     {
-
+        Main ob = new Main();
+        ArrayList<Course> routine = Main.deserializeCSV();
     }
 
     public void findCourse(String course)

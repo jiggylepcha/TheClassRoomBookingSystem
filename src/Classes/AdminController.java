@@ -76,5 +76,6 @@ public class AdminController
         Parent root = FXMLLoader.load(getClass().getResource("Request.fxml"));
         stage.setScene(new Scene(root, 750, 600));
         stage.show();
+
     }
 }

@@ -13,6 +13,11 @@ public class Room implements Serializable{
     private String thursdayBookings;
     private String fridayBookings;
 
+    public Room()
+    {
+
+    }
+
     public String getRoomNumber() {
         return roomNumber;
     }

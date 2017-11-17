@@ -1,3 +1,8 @@
+/*
+* Controller class for handling the login page.
+*
+* @author: Jigme Lobsang Lepcha
+ */
 package Classes;
 
 

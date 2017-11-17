@@ -6,14 +6,20 @@ public class Request implements Serializable
 {
     private String preferredRoom;
     private String purposeBooking;
-    private int requiredCapacity;
+    private String requiredCapacity;
+    private String day;
+    private String time;
 
-    Request(String room, String purpose, int capacity)
+    Request(String room, String purpose, String capacity, String day, String time)
     {
         this.preferredRoom = room;
         this.purposeBooking = purpose;
         this.requiredCapacity = capacity;
+        this.day = day;
+        this.time = time;
     }
+
+
 
     public String getPreferredRoom()
     {
@@ -25,7 +31,7 @@ public class Request implements Serializable
         return purposeBooking;
     }
 
-    public int getRequiredCapacity()
+    public String getRequiredCapacity()
     {
         return requiredCapacity;
     }

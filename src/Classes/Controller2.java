@@ -10,6 +10,8 @@ import javafx.stage.Stage;
 
 import java.io.*;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class Controller2 implements Serializable
 {
@@ -140,9 +142,20 @@ public class Controller2 implements Serializable
         return s1;
     }
 
-    public boolean validate(String email, String pass, String confirmPass)
+    public boolean validate(String email, String pass, String confirmPass) throws IOException, ClassNotFoundException
     {
-        return checkPassword(pass) && checkEmail(email) && confirmPass.equals(pass) && checkCheckbox();
+        return checkExists(email) && checkPassword(pass) && checkEmail(email) && confirmPass.equals(pass) && checkCheckbox();
+    }
+
+    private boolean checkExists(String email) throws IOException, ClassNotFoundException {
+        HashMap<String, Person> x=Controller2.deserialise();
+        for(Map.Entry<String, Person> entry:x.entrySet())
+        {
+            if(entry.getValue().credentials.emaill.equals(email)){
+                return false;
+            }
+        }
+        return true;
     }
 
     private boolean checkCheckbox()
