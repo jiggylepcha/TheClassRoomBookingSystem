@@ -10,17 +10,19 @@
     <children>
         <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
             <children>
-                <Button fx:id="bookRoom" layoutX="445.0" layoutY="325.0" mnemonicParsing="false" onMouseClicked="#clickBookRoom" text="Book" />
+                <Button fx:id="bookRoom" layoutX="445.0" layoutY="325.0" mnemonicParsing="false" onMouseClicked="#clickStudentBookRoom" text="Book" />
                 <Button fx:id="cancelButton" layoutX="529.0" layoutY="325.0" mnemonicParsing="false" onMouseClicked="#clickCancelButton" text="Cancel" />
                 <Label layoutX="75.0" layoutY="99.0" text="Preferred Room" />
                 <Label layoutX="75.0" layoutY="141.0" text="Time" />
-                <TextField layoutX="258.0" layoutY="94.0" />
-                <TextField layoutX="258.0" layoutY="136.0" />
+                <TextField fx:id="roomNumber" layoutX="258.0" layoutY="94.0" />
+                <TextField fx:id="time" layoutX="258.0" layoutY="136.0" />
                 <Label layoutX="281.0" layoutY="37.0" text="Book Room" />
             <Label layoutX="75.0" layoutY="183.0" text="Purpose of Booking" />
-            <TextField layoutX="258.0" layoutY="179.0" />
-            <TextField layoutX="258.0" layoutY="231.0" />
+            <TextField fx:id="purposeBooking" layoutX="258.0" layoutY="179.0" />
+            <TextField fx:id="requiredCapacity" layoutX="258.0" layoutY="231.0" />
             <Label layoutX="74.0" layoutY="236.0" text="Required Capacity" />
+            <TextField layoutX="261.0" layoutY="276.0" fx:id="day"/>
+            <Label layoutX="76.0" layoutY="281.0" text="Day" />
             </children>
         </AnchorPane>
     </children>

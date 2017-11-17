@@ -9,18 +9,20 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="404.0" prefWidth="655.0" VBox.vgrow="ALWAYS">
          <children>
-            <Button fx:id="cancelButton" layoutX="438.0" layoutY="232.0" mnemonicParsing="false" onMouseClicked="#clickCancelButton" text="Cancel" />
+            <Button fx:id="cancelButton" layoutX="438.0" layoutY="276.0" mnemonicParsing="false" onMouseClicked="#clickCancelButton" text="Cancel" />
             <Label layoutX="163.0" layoutY="68.0" prefHeight="25.0" prefWidth="124.0" text="Purpose of Booking" />
             <Label layoutX="163.0" layoutY="106.0" prefHeight="25.0" prefWidth="124.0" text="Preferred Room" />
             <Label layoutX="163.0" layoutY="142.0" prefHeight="25.0" prefWidth="124.0" text="Required Capacity" />
             <Label layoutX="249.0" layoutY="25.0" prefHeight="25.0" prefWidth="207.0" text="Information Entered By Student" />
-            <Button fx:id="approve" layoutX="173.0" layoutY="232.0" mnemonicParsing="false" onMouseClicked="#clickApprove" text="Approve" />
-            <Button fx:id="reject" layoutX="314.0" layoutY="231.0" mnemonicParsing="false" onMouseClicked="#clickReject" text="Reject" />
+            <Button fx:id="approve" layoutX="173.0" layoutY="279.0" mnemonicParsing="false" onMouseClicked="#clickApprove" text="Approve" />
+            <Button fx:id="reject" layoutX="314.0" layoutY="278.0" mnemonicParsing="false" onMouseClicked="#clickReject" text="Reject" />
             <Label fx:id="bookingPurpose" layoutX="311.0" layoutY="72.0" prefHeight="17.0" prefWidth="124.0" />
             <Label fx:id="preferredRoom" layoutX="311.0" layoutY="110.0" prefHeight="17.0" prefWidth="124.0" />
-             <Label fx:id="requiredCapacity" layoutX="311.0" layoutY="148.0" prefHeight="17.0" prefWidth="124.0" />
+             <Label fx:id="capacity" layoutX="311.0" layoutY="148.0" prefHeight="17.0" prefWidth="124.0" />
             <Label layoutX="163.0" layoutY="183.0" text="Time" />
-            <Label layoutX="326.0" layoutY="183.0" prefHeight="17.0" prefWidth="124.0" fx:id="timeRequested"/>
+            <Label fx:id="timeRequested" layoutX="326.0" layoutY="183.0" prefHeight="17.0" prefWidth="124.0" />
+            <Label fx:id="dayRequested" layoutX="165.0" layoutY="214.0" text="Day" />
+            <Label layoutX="326.0" layoutY="214.0" prefHeight="17.0" prefWidth="124.0"/>
          </children>
     </AnchorPane>
   </children>
