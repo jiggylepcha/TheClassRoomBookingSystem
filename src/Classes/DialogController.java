@@ -81,6 +81,14 @@ public class DialogController
     private Button addButton;
 
     /**
+     * This is a default constructor
+     */
+    public DialogController()
+    {
+
+    }
+
+    /**
      * Closes the Stage when the user presses cancel button.
      */
     public void clickCancelButton()
@@ -245,7 +253,7 @@ public class DialogController
 
         Request request = new Request(roomCheck, purpBooking, reqCap, dayCheck, timeCheck);
 
-        Queue<Request> requests= new LinkedList<Request>();
+        ArrayList<Request> requests= new ArrayList<Request>();
         requests.add(request);
 
         Admin ob = new Admin();
@@ -256,5 +264,10 @@ public class DialogController
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
 
+    }
+
+    public void viewStudentRequests() throws IOException, ClassNotFoundException {
+        Admin ob = new Admin();
+        ArrayList<Request> req = ob.deserialiseRequest();
     }
 }

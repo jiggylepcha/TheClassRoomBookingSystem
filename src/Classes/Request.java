@@ -58,4 +58,13 @@ public class Request implements Serializable
     {
         return requiredCapacity;
     }
+
+    public String getDay()
+    {
+        return day;
+    }
+    public String getTime()
+    {
+        return time;
+    }
 }

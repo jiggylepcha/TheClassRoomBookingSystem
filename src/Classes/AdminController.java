@@ -73,10 +73,10 @@ public class AdminController
         stage.show();
     }
     /** This function opens the View Student Requests window*/
-    public void clickViewRequests() throws IOException
+    public void clickViewRequests() throws IOException, ClassNotFoundException
     {
         Stage stage=new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("Request.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("NewRequests.fxml"));
         stage.setScene(new Scene(root, 750, 600));
         stage.show();
 
