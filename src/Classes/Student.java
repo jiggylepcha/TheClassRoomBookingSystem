@@ -159,11 +159,13 @@ public class Student extends Person implements Serializable{
         HashMap<String, String> map = deserialiseStudent();
         String value = map.get(UID);
         if(!value.contains(course)) {
-            System.out.println("User did not register this course: "+value);
-            map.put(UID, "$" + course);
-            return false;
+            System.out.println("User did not register this course: ");
+            System.out.println("This is the value to be put into the value " +(value+course));
+            map.put(UID, value + "&" + course);
+            serialiseStudent(map);
+            return false;  // Course is not registered when false
         }
-        return true;
+        return true; // Course is already registered when true
     }
 
     /**
@@ -176,7 +178,11 @@ public class Student extends Person implements Serializable{
         UID = userID;
         HashMap<String, String> userMap = deserialiseStudent();
         if(!userMap.containsKey(UID)) {
-            userMap.put(UID, "$");
+            userMap.put(UID, "&");
+        }
+        for(Map.Entry<String, String> entry: userMap.entrySet())
+        {
+            System.out.println("Key " + entry.getKey() +" ## "+"Value "+entry.getValue());
         }
         serialiseStudent(userMap);
         //System.out.println(userMap.get(UID));
