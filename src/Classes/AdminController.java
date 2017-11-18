@@ -1,5 +1,8 @@
 package Classes;
-
+/**
+ * This is the controller class for the admin page.
+ * @author Jigme Lobsang Lepcha
+ * @author Nakul Ramanathan*/
 import com.sun.corba.se.pept.encoding.OutputObject;
 import com.sun.tools.javac.comp.Check;
 import javafx.fxml.FXML;
@@ -27,7 +30,7 @@ public class AdminController
 
     @FXML
     private Button viewRequests;
-
+    /** This function logs out a user when they click the logout button*/
     public void clickLogOut()
     {
         Stage curStage=(Stage) logOutButton.getScene().getWindow();
@@ -45,7 +48,7 @@ public class AdminController
         }
 
     }
-
+    /** This function opens the View Room window*/
     public void clickViewRoom() throws IOException
     {
         Stage stage=new Stage();
@@ -53,7 +56,7 @@ public class AdminController
         stage.setScene(new Scene(root, 750, 600));
         stage.show();
     }
-
+    /** This function opens the Book Room window*/
     public void clickBookRoom() throws IOException
     {
         Stage stage=new Stage();
@@ -61,7 +64,7 @@ public class AdminController
         stage.setScene(new Scene(root, 750, 600));
         stage.show();
     }
-
+    /** This function opens the Unbook Room window*/
     public void clickUnbookRoom() throws IOException
     {
         Stage stage=new Stage();
@@ -69,7 +72,7 @@ public class AdminController
         stage.setScene(new Scene(root, 750, 600));
         stage.show();
     }
-
+    /** This function opens the View Student Requests window*/
     public void clickViewRequests() throws IOException
     {
         Stage stage=new Stage();

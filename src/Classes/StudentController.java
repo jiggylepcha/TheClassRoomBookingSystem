@@ -17,6 +17,10 @@ public class StudentController
     @FXML
     private Button logOutButton;
 
+    /**
+     * This function logs out a student
+     * @throws IOException
+     */
     public void clickLogOut() throws IOException
     {
         showAlert(Alert.AlertType.INFORMATION, "Logout Successful", "You have been successfully logged out");
@@ -34,7 +38,12 @@ public class StudentController
         }
     }
 
-
+    /**
+     * Shows the alert if logout is successful
+     * @param alertType Alert Type
+     * @param title Alert Title
+     * @param message Message to be displayed
+     */
     public static void showAlert(Alert.AlertType alertType, String title, String message) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
@@ -45,6 +54,10 @@ public class StudentController
         alert.show();
     }
 
+    /**
+     * Goes to the TimeTable window
+     * @throws IOException
+     */
     public void clickTimetable() throws IOException
     {
         Stage stage=new Stage();
@@ -53,6 +66,10 @@ public class StudentController
         stage.show();
     }
 
+    /**
+     * Goes to the search window
+     * @throws IOException
+     */
     public void clickSearchCourse() throws IOException
     {
         Stage stage=new Stage();
@@ -61,6 +78,10 @@ public class StudentController
         stage.show();
     }
 
+    /**
+     * Goes to the book room window
+     * @throws IOException
+     */
     public void clickBookRoom() throws IOException
     {
         Stage stage=new Stage();
@@ -69,6 +90,10 @@ public class StudentController
         stage.show();
     }
 
+    /**
+     * Goes to the View Room Window
+     * @throws IOException
+     */
     public void clickRoomAvailability() throws IOException
     {
         Stage stage=new Stage();

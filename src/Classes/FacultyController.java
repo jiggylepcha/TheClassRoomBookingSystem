@@ -1,4 +1,8 @@
 package Classes;
+/**
+ * This class controls the Faculty page
+ * @author Nakul Ramanathan
+ */
 
 import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import javafx.fxml.FXML;
@@ -15,6 +19,11 @@ public class FacultyController
 {
     @FXML
     private Button logOutButton;
+
+    /**
+     * Logs out from the faculty page
+     * @throws IOException
+     */
 
     public void clickLogOutButton() throws IOException
     {
@@ -34,6 +43,10 @@ public class FacultyController
         }
     }
 
+    /**
+     * Goes to the View Room window
+     * @throws IOException
+     */
     public void clickRoomAvailibiity() throws IOException
     {
         Stage stage=new Stage();
@@ -43,6 +56,10 @@ public class FacultyController
 
     }
 
+    /**
+     * Goes to a new window containing the Book Room details
+     * @throws IOException
+     */
     public void clickBookRoom() throws IOException
     {
         Stage stage=new Stage();
@@ -51,6 +68,10 @@ public class FacultyController
         stage.show();
     }
 
+    /**
+     * Goes to the cancel booking window
+     * @throws IOException
+     */
     public void clickUnbookRoom() throws IOException
     {
         Stage stage=new Stage();

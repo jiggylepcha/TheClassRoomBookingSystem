@@ -1,5 +1,11 @@
 package Classes;
+/**
+ * Controller for the diagonal classes
+ * @author Jigme Lobsang Lepcha
+ */
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -71,13 +77,23 @@ public class DialogController
     @FXML
     private ListView<String> searchList;
 
+    @FXML
+    private Button addButton;
 
+    /**
+     * Closes the Stage when the user presses cancel button.
+     */
     public void clickCancelButton()
     {
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
     }
 
+    /**
+     * Checks whether the room is available or not.
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public void clickCheckAvailability() throws IOException, ClassNotFoundException {
         String roomCheck = roomNumber.getText().toString();
         String timeCheck = time.getText().toString();
@@ -96,11 +112,19 @@ public class DialogController
 
     }
 
+    /**
+     * Unbooks an room
+     */
     public void clickUnbookRoom()
     {
 
     }
 
+    /**
+     * Books an available room.
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public void clickBookRoom() throws IOException, ClassNotFoundException
     {
         String roomCheck = roomNumber.getText().toString();
@@ -119,17 +143,30 @@ public class DialogController
         }
     }
 
+    /**
+     * Approves the booking request.
+     */
     public void clickApprove()
     {
 
     }
 
+    /**
+     * Rejects the booking request
+     */
     public void clickReject()
     {
         showAlert(Alert.AlertType.INFORMATION, "Reject", "Room booking cancelled");
 
     }
 
+    String newCourse;
+
+    /**
+     * Searches for a course from the database
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public void search() throws IOException, ClassNotFoundException {
         String searchQuery = searchBar.getText().toString();
         //System.out.println(searchQuery);
@@ -144,8 +181,44 @@ public class DialogController
                 searchList.setItems(myList);
             }
         }
+        searchList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                System.out.println("ListView selection changed from oldValue = "
+                        + oldValue + " to newValue = " + newValue);
+                joinCourse(newValue);
+            }
+        });
     }
 
+    /**
+     * Sets the course name to newCourse
+     * @param value name of the course to join
+     */
+    public void joinCourse(String value)
+    {
+        newCourse = value;
+    }
+
+    public void addCourse() throws IOException, ClassNotFoundException {
+        if(Student.addCourse(newCourse))
+        {
+            showAlert(Alert.AlertType.ERROR,"Course registration","You already have taken this course");
+        }
+        else
+        {
+            showAlert(Alert.AlertType.INFORMATION,"Course Registration", "Registration Successful");
+        }
+        Stage stage = (Stage) addButton.getScene().getWindow();
+        stage.close();
+    }
+
+    /**
+     * Displays the alert
+     * @param alertType Type of alert
+     * @param title Title of the alert
+     * @param message Message to be shown
+     */
     public static void showAlert(Alert.AlertType alertType, String title, String message) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
@@ -156,6 +229,11 @@ public class DialogController
         alert.show();
     }
 
+    /**
+     * Maintains a queue containing the various student booking requests
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public void clickStudentBookRoom() throws IOException, ClassNotFoundException
     {
         String roomCheck = roomNumber.getText().toString();

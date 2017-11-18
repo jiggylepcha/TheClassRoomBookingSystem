@@ -1,7 +1,7 @@
-/*
+/**
 * Controller class for handling the login page.
 *
-* @author: Jigme Lobsang Lepcha
+* @author: Jigme Lobsang Lepcha 2016045
  */
 package Classes;
 
@@ -38,7 +38,7 @@ public class Controller implements Serializable
 
 
 
-
+/** This function opens the signup page*/
     public void clickSignUp() throws IOException
     {
 
@@ -59,7 +59,10 @@ public class Controller implements Serializable
     }
 
 
-
+    /** This function authenticates the login process.
+     * It checks whether the email and the password fields are empty or not.
+     * It checks whether the user is registerd or not
+     * It checks whether the password is the same one as the one given during the signup process or not*/
     public void clickLogIn() throws IOException , ClassNotFoundException
     {
         Stage curStage = (Stage) loginButton.getScene().getWindow();
@@ -93,6 +96,7 @@ public class Controller implements Serializable
         if (p.typeOfUser == 0)
         {
             System.out.println("FOUND STUDENT");
+            Student.getUID(userID.toString());
             try
             {
                 Main.root=FXMLLoader.load(getClass().getResource("Student.fxml"));
@@ -137,6 +141,7 @@ public class Controller implements Serializable
         }
 
     }
+    /** This function displays the alert if the user has failed to authenticate*/
     private void showAlert(Alert.AlertType alertType, String title, String message) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
