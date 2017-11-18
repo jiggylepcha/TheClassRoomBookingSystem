@@ -1,5 +1,9 @@
 package Classes;
-
+/**
+ * This class registers a user.
+ *
+ * @author Jigme Lobsang Lepcha
+ * */
 import com.sun.corba.se.pept.encoding.OutputObject;
 import com.sun.tools.javac.comp.Check;
 import javafx.fxml.FXML;
@@ -41,12 +45,15 @@ public class Controller2 implements Serializable
 
     public static final long serialVersionUID=12323133L;
 
+    /**
+     * Constructor which checks whether the checkbox is clicked or not
+     */
     public Controller2()
     {
         if(checkStudent!=null)
         checkStudent.setSelected(true);
     }
-
+    /** This function registers a new user*/
     public void clickSignUp2() throws IOException , ClassNotFoundException{
         String emailID=email.getText().toString();
         String password=pass.getText().toString();
@@ -95,7 +102,7 @@ public class Controller2 implements Serializable
         }
 
     }
-
+    /** This function serialises the details of user*/
     private void serialize(String emailID, String password, int designation) throws IOException ,ClassNotFoundException {
         Credentials credentials=new Credentials(emailID, password, designation);
         Person tempPerson;
@@ -116,7 +123,7 @@ public class Controller2 implements Serializable
         System.out.println(myMap);
 
     }
-
+    /** This function serialises the hash map, with email as the key and Person as the value*/
     private void serialiseMap(HashMap<String, Person> xxx) throws IOException {
         ObjectOutputStream out=null;
         try {
@@ -127,7 +134,7 @@ public class Controller2 implements Serializable
             out.close();
         }
     }
-
+    /** This function deserialises the hash map*/
     public static HashMap<String, Person > deserialise() throws IOException, ClassNotFoundException {
         ObjectInputStream in=null;
         HashMap<String, Person> s1=null;
@@ -141,12 +148,12 @@ public class Controller2 implements Serializable
 
         return s1;
     }
-
+    /** This function validates the details entered by the student*/
     public boolean validate(String email, String pass, String confirmPass) throws IOException, ClassNotFoundException
     {
         return checkExists(email) && checkPassword(pass) && checkEmail(email) && confirmPass.equals(pass) && checkCheckbox();
     }
-
+    /** This function checks whether a user is already registerd or not*/
     private boolean checkExists(String email) throws IOException, ClassNotFoundException {
         HashMap<String, Person> x=Controller2.deserialise();
         for(Map.Entry<String, Person> entry:x.entrySet())
@@ -157,7 +164,7 @@ public class Controller2 implements Serializable
         }
         return true;
     }
-
+    /** This function checks whether a single checkbox is selected or not*/
     private boolean checkCheckbox()
     {
         if(checkStudent.isSelected() && !checkAdmin.isSelected() && !checkFaculty.isSelected())
@@ -172,13 +179,13 @@ public class Controller2 implements Serializable
             return true;
         return false;
     }
-
+    /** Checks whether the password field is empty or not*/
     private boolean checkPassword(String pass)
     {
         System.out.println(pass.isEmpty());
         return !pass.isEmpty();
     }
-
+    /** Checks whether the email field is empty or not. Also checks whether the email is of iiitd or not*/
     private boolean checkEmail(String email)
     {
         String tempEmail = email;
@@ -192,7 +199,7 @@ public class Controller2 implements Serializable
         System.out.println(emailDomain);
         return emailDomain.equals("@iiitd.ac.in");
     }
-
+    /** Goes to the Login Page*/
     public void clickBackButton() throws IOException
     {
         Stage curStage=(Stage) backButton.getScene().getWindow();

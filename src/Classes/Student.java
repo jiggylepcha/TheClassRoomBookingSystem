@@ -1,8 +1,15 @@
 package Classes;
+/**
+ * This class contains the details of the student class.
+ * This class also searches and adds courses for a particular student.
+ * @author Nakul Ramanathan
+ * @author Jigme Lobsang Lepcha
+ */
 
-import java.io.IOException;
-import java.io.Serializable;
+import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Student extends Person implements Serializable{
 
@@ -11,11 +18,22 @@ public class Student extends Person implements Serializable{
     protected Course course;
 
     protected String roomCheck, timeCheck, dayCheck;
+
+    /**
+     * Constructor to set the credentials
+     * @param credentials Sets the credentials
+     */
     public Student(Credentials credentials)
     {
         super(credentials,0);
     }
 
+    /**
+     * Constructor for student class
+     * @param roomCheck Room to be checked
+     * @param timeCheck Time to be checked
+     * @param dayCheck Day to be checked
+     */
     public Student(String roomCheck,String timeCheck,String dayCheck)
     {
         this.roomCheck = roomCheck;
@@ -24,6 +42,29 @@ public class Student extends Person implements Serializable{
     }
 
 
+    private String email;
+    /**
+     * Getter for the email
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * Sets the email of a student
+     * @param email Email of the student
+     */
+    public Student(String email)
+    {
+        this.email = email;
+    }
+
+    /**
+     * Checks room availability.
+     * @return true if the room is not available for booking else return false
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public boolean checkRoomAvailability() throws IOException, ClassNotFoundException {
         Main ob = new Main();
         ArrayList<Course> routine = Main.deserializeCSV();
@@ -85,24 +126,106 @@ public class Student extends Person implements Serializable{
         return true;
     }
 
+    /**
+     * Books a room when clicked
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public void bookRoom()throws IOException, ClassNotFoundException
     {
         Main ob = new Main();
         ArrayList<Course> routine = Main.deserializeCSV();
     }
 
+    /**
+     * Searches for a room
+     * @param course String which contains the course name
+     */
     public void findCourse(String course)
     {
 
     }
 
-    public void addCourse(String course)
-    {
+    static String UID;
 
+    /**
+     * Checks whether the course is registered by the student or not
+     * @param course Course name
+     * @return true if user registered for the particular course
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
+    public static boolean addCourse(String course) throws IOException, ClassNotFoundException {
+        HashMap<String, String> map = deserialiseStudent();
+        String value = map.get(UID);
+        if(!value.contains(course)) {
+            System.out.println("User did not register this course: "+value);
+            map.put(UID, "$" + course);
+            return false;
+        }
+        return true;
     }
 
+    /**
+     * Gets the username and stores it in a separate database for course registration.
+     * @param userID email address
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
+    public static void getUID(String userID) throws IOException, ClassNotFoundException {
+        UID = userID;
+        HashMap<String, String> userMap = deserialiseStudent();
+        if(!userMap.containsKey(UID)) {
+            userMap.put(UID, "$");
+        }
+        serialiseStudent(userMap);
+        //System.out.println(userMap.get(UID));
+    }
+
+    /**
+     * Serialises the HashMap
+     * @param map HashMap containing email as the key and course as the key
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
+    public static void serialiseStudent(HashMap<String,String> map)throws IOException, ClassNotFoundException
+    {
+        ObjectOutputStream out = null;
+        try {
+            out = new ObjectOutputStream(new FileOutputStream("studentInfo.ser"));
+            out.writeObject(map);
+        } finally {
+            out.close();
+        }
+    }
+
+    /**
+     * Deserialises the HashMap
+     * @return HashMap
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
+    public static HashMap<String,String > deserialiseStudent() throws IOException, ClassNotFoundException {
+        ObjectInputStream in=null;
+        HashMap<String, String> s1=null;
+        try {
+            in=new ObjectInputStream(new FileInputStream("studentInfo.ser"));
+            s1=(HashMap<String, String>) in.readObject();
+        }
+        finally {
+            in.close();
+        }
+
+        return s1;
+    }
+
+    /**
+     * toString method which overrides the Object class toString method
+     * @return email address
+     */
     public String toString()
     {
         return (this.credentials.emaill);
     }
+
 }

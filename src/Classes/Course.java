@@ -1,4 +1,10 @@
 package Classes;
+/**
+ * This class stores the details of each course and returns the appropriate function when asked for
+ * a particular function.
+ *
+ * @author Nakul Ramanathan 2016168
+ */
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -40,6 +46,24 @@ public class Course implements Serializable
     private String tut;
     private String lab;
 
+    /**
+     * Constructor to initialise the values
+     * @param type Elective/Mandatory
+     * @param courseName Course name
+     * @param courseCode Course code
+     * @param instructor Course instructor
+     * @param credits No. of credits
+     * @param acronym Course acronymn
+     * @param monday Time and venue
+     * @param tuesday Time and venue
+     * @param wednesday Time and venue
+     * @param thursday Time and venue
+     * @param friday Time and venue
+     * @param tut Time and venue
+     * @param lab Time and venue
+     * @param preConditions Course prerequisites
+     * @param postConditions Course postconditions
+     */
     Course(String type,
             String courseName,
             String courseCode,
@@ -73,6 +97,9 @@ public class Course implements Serializable
         this.postConditions = postConditions;
     }
 
+    /**
+     * These functions are the getters for various course info*/
+
     public String getType() {
         return type;
     }
@@ -97,6 +124,10 @@ public class Course implements Serializable
         return acronym;
     }
 
+    /**
+     * Returns monday time
+     * @return Monday time. If no class then returns '-'
+     */
     public String getMondayTime() {
         if (monday.contains("$")) {
             mondayTime = monday.substring(0, monday.indexOf("$"));
@@ -107,7 +138,10 @@ public class Course implements Serializable
             return monday;
         }
     }
-
+    /**
+     * Returns Monday venue
+     * @return Monday venue. If no class then returns '-'
+     */
     public String getMondayVenue() {
         if (monday.contains("$")) {
             mondayVenue = monday.substring(monday.indexOf("$") + 1);
@@ -118,7 +152,10 @@ public class Course implements Serializable
             return monday;
         }
     }
-
+    /**
+     * Returns Tuesday time
+     * @return Tuesday time. If no class then returns '-'
+     */
     public String getTuesdayTime() {
         if (tuesday.contains("$")) {
             tuesdayTime = tuesday.substring(0, tuesday.indexOf("$"));
@@ -129,7 +166,10 @@ public class Course implements Serializable
             return tuesday;
         }
     }
-
+    /**
+     * Returns Tuesday venue
+     * @return Tuesday venue. If no class then returns '-'
+     */
     public String getTuesdayVenue() {
         if (tuesday.contains("$")) {
             tuesdayVenue = tuesday.substring(tuesday.indexOf("$") + 1);
@@ -140,7 +180,10 @@ public class Course implements Serializable
             return tuesday;
         }
     }
-
+    /**
+     * Returns Wednesday time
+     * @return Wednesday time. If no class then returns '-'
+     */
     public String getWednesdayTime() {
         if (wednesday.contains("$")) {
             wednesdayTime = wednesday.substring(0, wednesday.indexOf("$"));
@@ -151,7 +194,10 @@ public class Course implements Serializable
             return wednesday;
         }
     }
-
+    /**
+     * Returns Wednesday venue
+     * @return Wednesday venue. If no class then returns '-'
+     */
     public String getWednesdayVenue() {
         if (wednesday.contains("$")) {
             wednesdayVenue = wednesday.substring(wednesday.indexOf("$") + 1);
@@ -162,7 +208,10 @@ public class Course implements Serializable
             return wednesday;
         }
     }
-
+    /**
+     * Returns Thursday time
+     * @return Thursday time. If no class then returns '-'
+     */
     public String getThursdayTime() {
         if (thursday.contains("$")) {
             thursdayTime = thursday.substring(0, thursday.indexOf("$"));
@@ -173,7 +222,10 @@ public class Course implements Serializable
             return thursday;
         }
     }
-
+    /**
+     * Returns Thursday Venue
+     * @return Thursday Venue. If no class then returns '-'
+     */
     public String getThursdayVenue() {
         if (thursday.contains("$")) {
             thursdayVenue = thursday.substring(thursday.indexOf("$") + 1);
@@ -184,7 +236,10 @@ public class Course implements Serializable
             return thursday;
         }
     }
-
+    /**
+     * Returns Friday time
+     * @return Friday time. If no class then returns '-'
+     */
     public String getFridayTime() {
         if (friday.contains("$")) {
             fridayTime = friday.substring(0, friday.indexOf("$"));
@@ -195,7 +250,10 @@ public class Course implements Serializable
             return friday;
         }
     }
-
+    /**
+     * Returns Friday Venue
+     * @return Friday Venue. If no class then returns '-'
+     */
     public String getFridayVenue() {
         if (friday.contains("$")) {
             fridayVenue = friday.substring(friday.indexOf("$") + 1);
@@ -207,6 +265,10 @@ public class Course implements Serializable
         }
     }
 
+    /**
+     *
+     * @return Returns the Tutorial Day
+     */
     public String getTutDay() {
         int index;
         String day1, day2;
@@ -244,7 +306,9 @@ public class Course implements Serializable
         else
         {return tut;}
     }
-
+    /**
+     * @return Returns Tutorial Timing
+     */
     public String getTutTime() {
         if(tut.contains("$"))
         {
@@ -290,6 +354,10 @@ public class Course implements Serializable
         return tut;}
     }
 
+    /**
+     *
+     * @return Returns the Tutorial Venue
+     */
     public String getTutVenue() {
         if (tut.contains("$"))
         {
@@ -310,6 +378,10 @@ public class Course implements Serializable
         }
     }
 
+    /**
+     *
+     * @return Returns the Lab days
+     */
     public String getLabDay() {
         if (lab.contains("$"))
         {
@@ -320,6 +392,10 @@ public class Course implements Serializable
         }
     }
 
+    /**
+     *
+     * @return Returns the Lab timings
+     */
     public String getLabTime() {
         if(lab.contains("$"))
         {
@@ -329,7 +405,9 @@ public class Course implements Serializable
             return lab;
         }
     }
-
+    /**
+     * @return Returns the Lab venue
+     */
     public String getLabVenue() {
         if(lab.contains("$"))
         {
@@ -340,10 +418,18 @@ public class Course implements Serializable
         }
     }
 
+    /**
+     *
+     * @return Returns the preconditions
+     */
     public String getPreConditions() {
         return preConditions;
     }
 
+    /**
+     *
+     * @return Returns the postconditions
+     */
     public String getPostConditions() {
         return postConditions;
     }

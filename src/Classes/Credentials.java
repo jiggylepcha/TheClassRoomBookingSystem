@@ -1,4 +1,8 @@
 package Classes;
+/**
+ * This class stores the Credentials of the the students
+ * @author Nakul Ramanathan
+ */
 
 import java.io.Serializable;
 
@@ -9,6 +13,12 @@ public class Credentials implements Serializable
     String pass;
     int designation;
 
+    /**
+     * This constructor sets the credentials
+     * @param e
+     * @param p
+     * @param d
+     */
     public Credentials(String e, String p, int d)
     {
         emaill=e;
