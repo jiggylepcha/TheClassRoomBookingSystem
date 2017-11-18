@@ -57,7 +57,7 @@ public class Admin extends Person implements Serializable{
 
     }
     /** This function serialises the Student Request Queue*/
-    public void serialiseRequest(Queue<Request> r) throws IOException
+    public void serialiseRequest(ArrayList<Request> r) throws IOException
     {
         ObjectOutputStream out = null;
         try {
@@ -68,13 +68,13 @@ public class Admin extends Person implements Serializable{
         }
     }
     /**This function deserialises the Student Request Queue*/
-    public Queue<Request> deserialiseRequest() throws IOException, ClassNotFoundException
+    public static ArrayList<Request> deserialiseRequest() throws IOException, ClassNotFoundException
     {
         ObjectInputStream in = null;
-        Queue<Request> req = null;
+        ArrayList<Request> req = null;
         try {
-            in = new ObjectInputStream(new FileInputStream("csv.ser"));
-            req = (Queue<Request>) in.readObject();
+            in = new ObjectInputStream(new FileInputStream("req.ser"));
+            req = (ArrayList<Request>) in.readObject();
         } finally {
             in.close();
         }

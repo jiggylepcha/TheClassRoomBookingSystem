@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="1000.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Classes.RequestController">
+    <children>
+        <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+         <children>
+            <ListView fx:id="requestList" layoutX="50.0" layoutY="75.0" prefHeight="340.0" prefWidth="641.0" />
+            <Label layoutX="300.0" layoutY="30.0" text="Student Requests" />
+            <Button fx:id="viewRequest" layoutX="506.0" layoutY="457.0" mnemonicParsing="false" onMouseClicked="#clickViewRequest" text="View" />
+            <Button fx:id="cancel" layoutX="599.0" layoutY="457.0" mnemonicParsing="false" onMouseClicked="#clickCancel" text="Cancel" />
+            <Button layoutX="584.0" layoutY="33.0" mnemonicParsing="false" text="See Requests" fx:id="seeRequest" onMouseClicked="#clickSeeRequest"/>
+         </children>
+        </AnchorPane>
+    </children>
+</VBox>

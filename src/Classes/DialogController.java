@@ -81,6 +81,14 @@ public class DialogController
     private Button addButton;
 
     /**
+     * This is a default constructor
+     */
+    public DialogController()
+    {
+
+    }
+
+    /**
      * Closes the Stage when the user presses cancel button.
      */
     public void clickCancelButton()
@@ -201,6 +209,7 @@ public class DialogController
     }
 
     public void addCourse() throws IOException, ClassNotFoundException {
+        //System.out.println("Course name: "+newCourse);
         if(Student.addCourse(newCourse))
         {
             showAlert(Alert.AlertType.ERROR,"Course registration","You already have taken this course");
@@ -209,8 +218,8 @@ public class DialogController
         {
             showAlert(Alert.AlertType.INFORMATION,"Course Registration", "Registration Successful");
         }
-        Stage stage = (Stage) addButton.getScene().getWindow();
-        stage.close();
+//        Stage stage = (Stage) addButton.getScene().getWindow();
+//        stage.close();
     }
 
     /**
@@ -244,7 +253,7 @@ public class DialogController
 
         Request request = new Request(roomCheck, purpBooking, reqCap, dayCheck, timeCheck);
 
-        Queue<Request> requests= new LinkedList<Request>();
+        ArrayList<Request> requests= new ArrayList<Request>();
         requests.add(request);
 
         Admin ob = new Admin();
@@ -255,5 +264,10 @@ public class DialogController
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
 
+    }
+
+    public void viewStudentRequests() throws IOException, ClassNotFoundException {
+        Admin ob = new Admin();
+        ArrayList<Request> req = ob.deserialiseRequest();
     }
 }
